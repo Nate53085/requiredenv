@@ -1,6 +1,10 @@
 const tap = require('tap');
 const requiredEnv = require('../lib/main');
 
+tap.throws(function () {
+  requiredEnv.checkRequired();
+}, new Error('ENOENT: no such file or directory, open \'required.env\''), 'An Error should be thrown if requirements file doesn\'t exist');
+
 tap.doesNotThrow('basic single required.env parses without throwing', test => {
   requiredEnv.checkRequired('tests/test_files/single.env');
 });
