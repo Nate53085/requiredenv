@@ -5,6 +5,11 @@ tap.throws(function () {
   requiredEnv.checkRequired();
 }, new Error('ENOENT: no such file or directory, open \'required.env\''), 'An Error should be thrown if requirements file doesn\'t exist');
 
+tap.doesNotThrow('lines starting with # should be ignored as comments', test => {
+  process.env.BUT_DO_THIS = "value ignored";
+  requiredEnv.checkRequired('tests/test_files/ignore_comments.env');
+});
+
 tap.doesNotThrow('basic single required.env parses without throwing', test => {
   process.env.TEST_ENV_VAR = "test value";
   requiredEnv.checkRequired('tests/test_files/single.env');
