@@ -6,7 +6,15 @@ tap.throws(function () {
 }, new Error('ENOENT: no such file or directory, open \'required.env\''), 'An Error should be thrown if requirements file doesn\'t exist');
 
 tap.doesNotThrow('basic single required.env parses without throwing', test => {
+  process.env.TEST_ENV_VAR = "test value";
   requiredEnv.checkRequired('tests/test_files/single.env');
+});
+
+tap.doesNotThrow('multiple entries parses without throwing', test => {
+  process.env.TEST1 = "TEST1";
+  process.env.TEST2 = "TEST2";
+  process.env.TEST3 = "TEST3";
+  requiredEnv.checkRequired('tests/test_files/multiple_env_variables.env');
 });
 
 tap.throws(function () {
