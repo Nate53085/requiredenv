@@ -13,3 +13,8 @@ tap.doesNotThrow('single checking that variable exists in requiredenv works', te
   process.env.TO_CHECK = "foo";
   requiredEnv.checkRequired('tests/test_files/simple_check_works.env', ['TO_CHECK']);
 });
+
+tap.throws(function () {
+  process.env.MISSING = "foo";
+  requiredEnv.checkRequired('tests/test_files/missing_check_throws.env', ['MISSING']);
+}, new Error(`MISSING is not defined in tests/test_files/missing_check_throws.env as expected`), 'An Error should be thrown when a reverse check fails');
