@@ -1,0 +1,27 @@
+{
+  "name": "requiredenv",
+  "version": "0.1.0",
+  "description": "Allows you to configure your project to fail early at runtime if required environment variables aren't set",
+  "main": "lib/main.js",
+  "scripts": {
+    "test": "tap tests/*.js --100"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nate53085/requiredenv.git"
+  },
+  "keywords": [
+    "dotenv",
+    "environment",
+    "env"
+  ],
+  "author": "Nate Bourgoin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Nate53085/requiredenv/issues"
+  },
+  "homepage": "https://github.com/Nate53085/requiredenv#readme",
+  "devDependencies": {
+    "tap": "^14.11.0"
+  }
+}
