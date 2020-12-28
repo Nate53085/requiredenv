@@ -4,7 +4,7 @@
   "description": "Allows you to configure your project to fail early at runtime if required environment variables aren't set",
   "main": "lib/main.js",
   "scripts": {
-    "test": "tap tests/*.js --100 --coverage-report=html"
+    "test": "tap tests/*.js --100"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   "homepage": "https://github.com/Nate53085/requiredenv#readme",
   "devDependencies": {
     "codecov": "^3.8.1",
+    "dotenv": "^8.2.0",
     "tap": "^14.11.0"
   }
 }

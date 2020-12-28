@@ -1,4 +1,6 @@
 const tap = require('tap');
+const dotEnv = require('dotenv');
+
 const requiredEnv = require('../lib/main');
 
 tap.throws(function () {
@@ -35,3 +37,9 @@ tap.throws(function () {
   process.env.MISSING = "foo";
   requiredEnv.checkRequired('tests/test_files/missing_check_throws.env', ['MISSING']);
 }, new Error(`MISSING is not defined in tests/test_files/missing_check_throws.env as expected`), 'An Error should be thrown when a reverse check fails');
+
+tap.doesNotThrow('plays well with dotenv', test => {
+  let dotEnvResult = dotEnv.config({ path: 'tests/test_files/dotenv.env' });
+  console.log("Result " + JSON.stringify(dotEnvResult.parsed));
+  requiredEnv.checkRequired('tests/test_files/test_dotenv_required.env', Object.keys(dotEnvResult.parsed));
+});
