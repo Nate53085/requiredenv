@@ -28,18 +28,17 @@ tap.throws(function () {
   requiredEnv.checkRequired('tests/test_files/single_missing.env');
 }, new Error('Missing environment variable MISSING'), 'An Error should be thrown with the missing environment variable');
 
+tap.doesNotThrow('plays well with dotenv', test => {
+  let dotEnvResult = dotEnv.config({ path: 'tests/test_files/dotenv.env' });
+  requiredEnv.checkRequired('tests/test_files/test_dotenv_required.env', dotEnvResult.parsed);
+});
+
 tap.doesNotThrow('single checking that variable exists in requiredenv works', test => {
   process.env.TO_CHECK = "foo";
-  requiredEnv.checkRequired('tests/test_files/simple_check_works.env', ['TO_CHECK']);
+  requiredEnv.checkRequired('tests/test_files/simple_check_works.env', { 'TO_CHECK': 'unused value' });
 });
 
 tap.throws(function () {
   process.env.MISSING = "foo";
-  requiredEnv.checkRequired('tests/test_files/missing_check_throws.env', ['MISSING']);
+  requiredEnv.checkRequired('tests/test_files/missing_check_throws.env', { 'MISSING': 'unused value' });
 }, new Error(`MISSING is not defined in tests/test_files/missing_check_throws.env as expected`), 'An Error should be thrown when a reverse check fails');
-
-tap.doesNotThrow('plays well with dotenv', test => {
-  let dotEnvResult = dotEnv.config({ path: 'tests/test_files/dotenv.env' });
-  console.log("Result " + JSON.stringify(dotEnvResult.parsed));
-  requiredEnv.checkRequired('tests/test_files/test_dotenv_required.env', Object.keys(dotEnvResult.parsed));
-});
