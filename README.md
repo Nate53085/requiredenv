@@ -63,6 +63,8 @@ require('requiredenv').checkRequired({ checkInRequiredEnv : expected });
 
 If a line starts with a '#' character it is ignored as a comment. This is useful to add documentation to required.env
 
+For example:
+
 ```dosini
 # The port that this service will be hosted on
 PORT
