@@ -28,7 +28,7 @@ VAR3
 Then, early in your program, do the following:
 
 ```javascript
-require('requiredenv').checkRequired()
+require('@natebourgoin/requiredenv').checkRequired()
 ```
 
 If an environment variable that is listed in required.env is not defined in process.env, this will throw an exception
@@ -38,7 +38,7 @@ If an environment variable that is listed in required.env is not defined in proc
 If you wish, you can specify a specific file to be parsed rather than the default 'required.env'
 
 ```javascript
-require('requiredenv').checkRequired({ environmentDefinition : "path/to/file" });
+require('@natebourgoin/requiredenv').checkRequired({ environmentDefinition : "path/to/file" });
 ```
 
 ## Integration with dotenv
@@ -47,14 +47,14 @@ By passing the output of dotenv to requiredenv you can also make sure that all i
 
 ```javascript
 let parsed = require('dotenv').config().parsed();
-require('requiredenv').checkRequired({ checkInRequiredEnv : parsed });
+require('@natebourgoin/requiredenv').checkRequired({ checkInRequiredEnv : parsed });
 ```
 
 You are also able to take advantage of this behavior without dotenv by defining the variables you are expecting to find.:
 
 ```javascript
 let expected = {VAR1 : 'UNUSED VALUE', VAR2 : 'UNUSED VALUE', VAR3: 'UNUSED VALUE'}
-require('requiredenv').checkRequired({ checkInRequiredEnv : expected });
+require('@natebourgoin/requiredenv').checkRequired({ checkInRequiredEnv : expected });
 ```
 
 *NOTE: For this check, values are ignored and can be set to any value*
