@@ -24,6 +24,7 @@
   "devDependencies": {
     "codecov": "^3.8.1",
     "dotenv": "^8.2.0",
+    "eslint": "^7.16.0",
     "tap": "^14.11.0"
   }
 }
