@@ -14,7 +14,7 @@ npm install dotenv
 
 ## basic usage
 
-- Create a file called required.env
+- Create a file in the root of your project called required.env
 - List environment variables by name that your care about (one per line) without values
 
 For example:
@@ -33,7 +33,7 @@ require('requiredenv').checkRequired()
 
 If an environment variable that is listed in required.env is not defined in process.env, this will throw an exception
 
-## advanced usage and integration with dotenv
+## integration with dotenv
 
 By passing the output of dotenv to requiredenv you can also make sure that all items that are defined in .env are also defined in require.env. This is useful to enforce that the definition file is kept up to date.
 
