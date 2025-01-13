@@ -9,7 +9,7 @@ With dotenv for inspiration, allow a user to define what environment variables a
 ## Installation
 
 ```bash
-npm install dotenv
+npm i @natebourgoin/requiredenv
 ```
 
 ## Basic Usage
